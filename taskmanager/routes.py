@@ -17,7 +17,11 @@ def categories():
 @app.route("/add_category", methods=["GET", "POST"])   
 def add_category():
     if request.method == "POST":
-        category = Category  # set to new instance of Category from top of page
+        # set to new instance of Category from top of page
+        category = Category(category_name=request.form.get("category_name"))  
+        db.session.add(category)
+        db.session.commit()
+        return redirect(url_for("category"))
     return render_template("add_category.html")
 # Methods used for form submission to db
 # user clicks add_category in add_category.html, which calles this function
