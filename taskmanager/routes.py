@@ -24,7 +24,7 @@ def add_category():
         category = Category(category_name=request.form.get("category_name"))  
         db.session.add(category)
         db.session.commit()
-        return redirect(url_for("category"))
+        return redirect(url_for("categories"))
     return render_template("add_category.html")
 # Methods used for form submission to db
 # user clicks add_category in add_category.html, which calles this function
