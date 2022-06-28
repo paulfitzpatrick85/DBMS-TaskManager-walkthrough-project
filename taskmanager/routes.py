@@ -11,7 +11,10 @@ def home():
 # populate category template in base.html
 @app.route("/categories")
 def categories():
-    return render_template("categories.html")
+    categories = list(Category.query.order_by(Category.category_name).all())
+    return render_template("categories.html", categories=categories)
+# 1st categories refers to categorie.html
+# 2nd categories refers to variable above
 
 
 @app.route("/add_category", methods=["GET", "POST"])   
