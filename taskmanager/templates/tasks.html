@@ -13,7 +13,7 @@
 
 <ul class="collapsible">
     {% for task in tasks|sort(attribute="due_date") %}  <!--sort  tasks by date due-->
-    <li>
+    <li>    
         <div class="collapsible-header white-text light-blue darken-4">
             <i class="fas fa-caret-down"></i>
             <strong>{{ task.task_name }}</strong> : {{ task.due_date.strftime("%d %B, %Y") }} <!--time/date format-->
@@ -24,6 +24,9 @@
         <div class="collapsible-body">
             <strong>{{ task.category }}</strong>
             <p>{{ task.task_description }}</p>
+            <p>
+                <a href="{{ url_for('edit_task', task_id=task.id) }}" class="btn green accent-4">Edit</a>
+            </p>
         </div>
     </li>
     {% endfor %}
